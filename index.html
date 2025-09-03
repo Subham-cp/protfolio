@@ -1,11 +1,356 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>git</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Subham | Portfolio</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- AOS (Animate On Scroll) CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- Typed.js for typing animation -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+  <style>
+    :root {
+      --bg: #f9f9f9;
+      --text: #333;
+      --primary: #2575fc;
+    }
+    [data-theme="dark"] {
+      --bg: #1e1e1e;
+      --text: #eee;
+      --primary: #6a11cb;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: all 0.3s;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary), #6a11cb);
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+    }
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      animation: pop 1s ease;
+    }
+    #typed-text {
+      font-size: 1.2rem;
+      color: #ffeb3b;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #ffeb3b;
+    }
+    .theme-toggle {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      background: none;
+      border: 2px solid white;
+      color: white;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+    .theme-toggle:hover {
+      background: #ffeb3b;
+      color: #333;
+    }
+    section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.5rem;
+    }
+    p, ul li {
+      font-size: 1.2rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 10px auto;
+      line-height: 1.6;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    .card {
+      background: rgb(189, 42, 42);
+      border-radius: 15px;
+      padding: 30px 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      margin: 20px 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+      background: var(--bg);
+      color: var(--text);
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .download-btn {
+      display: block;
+      margin: 20px auto;
+      padding: 12px 30px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .download-btn:hover {
+      background: #ffeb3b;
+      color: #333;
+    }
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <p>hello world!</p>
+
+  <header>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    <h1>Subham's Portfolio</h1>
+    <div id="typed-text"></div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="about" data-aos="fade-up">
+    <h2>About Me</h2>
+    <p>Hello! I'm <strong>Subham</strong>, a passionate web developer and tech enthusiast. I build awesome, responsive, and dynamic websites. I love solving problems and creating digital magic!</p>
+    <a href="#" class="download-btn">Download CV</a>
+  </section>
+  <!-- Wavy SVG Transition -->
+<div style="overflow:hidden; line-height:0;">
+    <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 50px; width: 100%;">
+      <path d="M0.00,49.98 C150.00,150.00 349.79,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: var(--primary);"></path>
+    </svg>
+  </div>
+  
+
+  <section id="education" data-aos="fade-up">
+    <h2>Education</h2>
+    <div class="grid">
+      <div class="card">
+        <i class="fas fa-university fa-2x"></i>
+        <h3>B.Tech in Computer Science and Engineering </h3>
+        <p>NERIST,ITANAGAR (2020 - 2024)</p>
+      </div>
+    </div>
+  </section>
+  <!-- Wavy SVG Transition -->
+<div style="overflow:hidden; line-height:0;">
+    <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 50px; width: 100%;">
+      <path d="M0.00,49.98 C150.00,150.00 349.79,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: var(--primary);"></path>
+    </svg>
+  </div>
+  
+
+  <section id="experience" data-aos="fade-up">
+    <h2>Experience</h2>
+    <div class="grid">
+      <div class="card">
+        <i class="fas fa-briefcase fa-2x"></i>
+        <h3>Frontend Developer Intern</h3>
+        <p>ABC Company (2024)</p>
+      </div>
+    </div>
+  </section>
+  <!-- Wavy SVG Transition -->
+<div style="overflow:hidden; line-height:0;">
+    <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 50px; width: 100%;">
+      <path d="M0.00,49.98 C150.00,150.00 349.79,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: var(--primary);"></path>
+    </svg>
+  </div>
+  
+
+  <section id="projects" data-aos="fade-up">
+    <h2>Projects</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Portfolio Website</h3>
+      </div>
+      <div class="card">
+        <h3>Weather App</h3>
+      </div>
+      <div class="card">
+        <h3>Task Manager</h3>
+      </div>
+    </div>
+  </section>
+  <!-- Wavy SVG Transition -->
+<div style="overflow:hidden; line-height:0;">
+    <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 50px; width: 100%;">
+      <path d="M0.00,49.98 C150.00,150.00 349.79,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: var(--primary);"></path>
+    </svg>
+  </div>
+  
+
+  <section id="skills" data-aos="fade-up">
+    <h2>Skills</h2>
+    <div class="grid">
+      <div class="card">HTML, CSS, JS</div>
+      <div class="card">React, Node.js</div>
+      <div class="card">DSA & Problem Solving</div>
+    </div>
+  </section>
+  <!-- Wavy SVG Transition -->
+<div style="overflow:hidden; line-height:0;">
+    <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 50px; width: 100%;">
+      <path d="M0.00,49.98 C150.00,150.00 349.79,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: var(--primary);"></path>
+    </svg>
+  </div>
+  
+
+  <section id="achievements" data-aos="fade-up">
+    <h2>Achievements</h2>
+    <div class="grid">
+      <div class="card">
+        <i class="fas fa-trophy fa-2x"></i>
+        <h3>Winner - Hackathon 2023</h3>
+      </div>
+    </div>
+  </section>
+  <!-- Wavy SVG Transition -->
+<div style="overflow:hidden; line-height:0;">
+    <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 50px; width: 100%;">
+      <path d="M0.00,49.98 C150.00,150.00 349.79,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: var(--primary);"></path>
+    </svg>
+  </div>
+  
+
+  <section id="contact" data-aos="fade-up">
+    <h2>Contact Me</h2>
+    <p>Email: subham@example.com</p>
+    <p>Phone: +91 603343XXX7</p>
+  </section><!-- Wavy SVG Transition -->
+  <div style="overflow:hidden; line-height:0;">
+    <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 50px; width: 100%;">
+      <path d="M0.00,49.98 C150.00,150.00 349.79,-50.00 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: var(--primary);"></path>
+    </svg>
+  </div>
+  
+
+  <footer>
+    <p>© 2025 Subham | Made with 💙</p>
+  </footer>
+
+  <button id="backToTop" onclick="scrollToTop()">↑</button>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    new Typed("#typed-text", {
+      strings: ["I'm a Developer.", "I'm a Designer.", "I'm a Coder."],
+      typeSpeed: 50,
+      backSpeed: 50,
+      loop: true
+    });
+
+    function toggleTheme() {
+      document.body.dataset.theme = 
+        document.body.dataset.theme === "dark" ? "" : "dark";
+    }
+
+    window.onscroll = function() {
+      const btn = document.getElementById("backToTop");
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        btn.style.display = "flex";
+      } else {
+        btn.style.display = "none";
+      }
+    }
+
+    function scrollToTop() {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+  </script>
+
 </body>
 </html>
